@@ -137,6 +137,7 @@ export class Denovamon {
         await setTimeout(async () => {
             this.log(`File change detected, restarting...`);
             this.process && await this.process.close();
+            await new Promise(c => setTimeout(c, 100));
             this.process = this.startProcess();
         }, this.throttle);
     }
